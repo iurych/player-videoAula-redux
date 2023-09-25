@@ -21,12 +21,12 @@ export const Lesson = ({duration, title, onPlay, isLessonActive = false }: iLess
                     <PlayCircle className='w-4 h-4 text-emerald-400 ' />
                 ) : (
 
-                    <Video className='w-4 h-4 text-zinc-500 '/>
+                    <Video className='w-4 h-4 text-zinc-500 group-hover:text-zinc-400'/>
                 )
             }
             
-            <span> {title} </span>
-            <span className='ml-auto font-mono text-zinc-500 group-data-[active=true]:text-emerald-400 group-data-[active=false]:hover:text-zinc-400' > {duration} </span>
+            <span className=' group-hover:text-zinc-400'> {title} </span>
+            <span className='ml-auto font-mono text-zinc-500 group-data-[active=true]:text-emerald-400 group-hover:text-zinc-400' > {duration} </span>
 
         </button>
     )
