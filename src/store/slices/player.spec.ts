@@ -1,11 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { player as reducer, play, next } from './player';
+import { player as reducer, play, next, iPlayerState } from './player';
 
-const mockTestAble = {
+const mockTestAble: iPlayerState = {
   course: {
+    id: 1,
     modules: [
       {
-        id: '1',
+        id: 1,
         title: 'Iniciando com React',
         lessons: [
           {
@@ -21,7 +22,7 @@ const mockTestAble = {
         ],
       },
       {
-        id: '2',
+        id: 2,
         title: 'Estrutura da aplicação',
         lessons: [
           {
@@ -36,6 +37,7 @@ const mockTestAble = {
       },
     ],
   },
+  isLoading: false,
   currentModuleIndex: 0,
   currentLessonIndex: 0,
 };

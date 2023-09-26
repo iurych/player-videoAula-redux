@@ -1,22 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { MessageCircle } from 'lucide-react'
 import { VideoPlayer } from '../components/VideoPlayer'
 import { Module } from '../components/Module'
-import { useAppSelector } from '../store'
+import { useAppDispatch, useAppSelector } from '../store'
 import { Header } from '../components/Header'
-import { useCurrentLesson } from '../store/slices/player'
+import { loadCourse, useCurrentLesson } from '../store/slices/player'
 import { useEffect } from 'react'
-
 
 export const Player = () => {
 
-const modules = useAppSelector(state => {
-    return state.player.course.modules
-})
+    const dispatch = useAppDispatch()
+
+    const modules = useAppSelector(state => {
+        return state.player.course?.modules
+    })
 
     const { currentLesson } = useCurrentLesson()
 
     useEffect(() => {
-        document.title = `Aula: ${currentLesson.title}`
+        dispatch(loadCourse())
+    }, [])
+
+    useEffect(() => {
+        if(currentLesson) {
+
+            document.title = `Aula: ${currentLesson.title}`
+        }
     }, [currentLesson])
 
     return (
@@ -47,7 +56,7 @@ const modules = useAppSelector(state => {
                     </div>
                    
                     <aside className='w-80 absolute top-0 bottom-0 right-0 divide-y-2 divide-zinc-900 border-l border-zinc-800 bg-zinc-900 overflow-y-scroll scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-800' >
-                        {modules.map((module, index) => {
+                        {modules && modules.map((module, index) => {
                             return (
                                 <Module 
                                     key={module.id}

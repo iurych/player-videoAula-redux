@@ -14,19 +14,19 @@ export const Lesson = ({duration, title, onPlay, isLessonActive = false }: iLess
             onClick={onPlay}
             data-active={isLessonActive}
             disabled={isLessonActive}
-            className='group flex items-center gap-3 text-sm text-zinc-400 data-[active=true]:text-emerald-400 enabled:hover:text-zinc-100'
+            className='group group/lesson flex items-center gap-3 text-sm text-zinc-400 data-[active=true]:text-emerald-400 enabled:hover:text-zinc-100'
         >
             {
                 isLessonActive ? (
                     <PlayCircle className='w-4 h-4 text-emerald-400 ' />
                 ) : (
 
-                    <Video className='w-4 h-4 text-zinc-500 group-hover:text-zinc-400'/>
+                    <Video className='w-4 h-4 text-zinc-500 group-hover/lesson:text-zinc-400'/>
                 )
             }
             
-            <span className=' group-hover:text-zinc-400'> {title} </span>
-            <span className='ml-auto font-mono text-zinc-500 group-data-[active=true]:text-emerald-400 group-hover:text-zinc-400' > {duration} </span>
+            <span className=' group-hover/lesson:text-zinc-400'> {title} </span>
+            <span className='ml-auto font-mono text-zinc-500 group-data-[active=true]:text-emerald-400 group-hover/lesson:text-zinc-400' > {duration} </span>
 
         </button>
     )
