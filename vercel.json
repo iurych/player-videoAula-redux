@@ -1,3 +1,6 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    { "source": "/courses/(.*)", "destination": "/server.json" },
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }
